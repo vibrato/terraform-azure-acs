@@ -77,3 +77,8 @@ variable "agent_count" {
   type    = "string"
   default = 3
 }
+
+variable "git_commit" {
+  type = "string"
+  default = "unset"
+}

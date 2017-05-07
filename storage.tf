@@ -8,6 +8,7 @@ resource "azurerm_storage_account" "storage" {
   tags {
     environment = "${var.environment}"
     stack_name  = "${var.stack_name}"
+    git_commit = "${var.git_commit}"
   }
 
   lifecycle {
@@ -27,6 +28,7 @@ resource "azurerm_storage_account" "container_registry" {
     environment = "${var.environment}"
     stack_name  = "${var.stack_name}"
     role        = "container_registry"
+        git_commit = "${var.git_commit}"
   }
 
   lifecycle {
@@ -46,6 +48,7 @@ resource "azurerm_storage_account" "logs" {
   tags {
     environment = "${var.environment}"
     stack_name  = "${var.stack_name}"
+        git_commit = "${var.git_commit}"
     role        = "logs"
   }
 
