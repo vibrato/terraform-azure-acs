@@ -48,19 +48,6 @@ variable "os_admin_username" {
   default = "os_admin"
 }
 
-# variable "os_admin_password" {
-#   type = "string"
-# }
-
-# variable "db_admin_username" {
-#   type    = "string"
-#   default = "db_admin"
-# }
-
-# variable "db_admin_password" {
-#   type = "string"
-# }
-
 variable "enableDiagnostics" {
   type    = "string"
   default = "true"
