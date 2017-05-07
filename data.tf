@@ -1,5 +1,6 @@
 terraform {
   backend "azure" {
+    resource_group_name  = "terraform-remote-state"
     storage_account_name = "vibratoremotestate"
     container_name       = "terraform-state"
     key                  = "azure-containers.tfstate"
