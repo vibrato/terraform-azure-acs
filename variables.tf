@@ -73,8 +73,7 @@ variable "vm_size" {
   default = "Standard_DS1_v2"
 }
 
-variable "agent_count"
-{
-  type = "string"
+variable "agent_count" {
+  type    = "string"
   default = 3
 }
