@@ -29,13 +29,14 @@ variable "kube_client_secret" {
 }
 
 variable "stack_name" {
-  type        = "string"
-  description = ""
+  type    = "string"
+  default = "terraformacs"
 }
 
 variable "azure_location" {
   type        = "string"
   description = ""
+  default     = "Australia Southeast"
 }
 
 variable "environment" {
