@@ -3,9 +3,14 @@ variable "subscription_id" {
   description = ""
 }
 
+variable "tenant_id" {
+  type        = "string"
+  description = "https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties Directory ID"
+}
+
 variable "client_id" {
   type        = "string"
-  description = ""
+  description = "Application ID from Azure AD App Registration"
 }
 
 variable "client_secret" {
@@ -19,11 +24,6 @@ variable "kube_client_id" {
 }
 
 variable "kube_client_secret" {
-  type        = "string"
-  description = ""
-}
-
-variable "tenant_id" {
   type        = "string"
   description = ""
 }
