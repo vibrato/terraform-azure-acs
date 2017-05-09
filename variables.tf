@@ -76,7 +76,7 @@ variable "vm_size" {
 
 variable "agent_count" {
   type    = "string"
-  default = 5
+  default = 3
 }
 
 variable "git_repo" {
