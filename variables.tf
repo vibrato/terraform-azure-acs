@@ -78,6 +78,16 @@ variable "agent_count" {
   default = 3
 }
 
+variable "git_repo" {
+  type    = "string"
+  default = "unset"
+}
+
+variable "git_branch" {
+  type    = "string"
+  default = "unset"
+}
+
 variable "git_commit" {
   type    = "string"
   default = "unset"

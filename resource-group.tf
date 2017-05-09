@@ -5,6 +5,8 @@ resource "azurerm_resource_group" "res_group" {
   tags {
     environment = "${var.environment}"
     stack_name  = "${var.stack_name}"
+    git_repo    = "${var.git_repo}"
     git_commit  = "${var.git_commit}"
+    git_branch  = "${var.git_branch}"
   }
 }
