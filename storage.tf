@@ -20,28 +20,6 @@ resource "azurerm_storage_account" "storage" {
   }
 }
 
-resource "azurerm_storage_account" "container_registry" {
-  name                = "acr${lower(var.stack_name)}${element(split("-", uuid()), 0)}"
-  resource_group_name = "${azurerm_resource_group.res_group.name}"
-  location            = "${azurerm_resource_group.res_group.location}"
-  account_type        = "Standard_GRS"
-
-  tags {
-    environment = "${var.environment}"
-    stack_name  = "${var.stack_name}"
-    role        = "container_registry"
-    git_repo    = "${var.git_repo}"
-    git_commit  = "${var.git_commit}"
-    git_branch  = "${var.git_branch}"
-  }
-
-  lifecycle {
-    ignore_changes = [
-      "name",
-    ]
-  }
-}
-
 resource "azurerm_storage_account" "logs" {
   name                   = "logs${lower(var.stack_name)}${element(split("-", uuid()), 0)}"
   resource_group_name    = "${azurerm_resource_group.res_group.name}"
