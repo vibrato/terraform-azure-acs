@@ -1,45 +1,59 @@
+resource "random_id" "storage_suffix" {
+  keepers = {
+    environment = "${var.environment}"
+    stack_name  = "${var.stack_name}"
+  }
+
+  byte_length = "4"
+}
+
+resource "azurerm_storage_account" "container_registry" {
+  name                = "cont${lower(var.stack_name)}${random_id.storage_suffix.hex}"
+  resource_group_name = "${azurerm_resource_group.res_group.name}"
+  location            = "${azurerm_resource_group.res_group.location}"
+  account_type        = "Standard_GRS"
+
+  tags {
+    environment = "${var.environment}"
+    stack_name  = "${var.stack_name}"
+    contents    = "containers"
+    git_repo    = "${var.git_repo}"
+    git_commit  = "${var.git_commit}"
+    git_branch  = "${var.git_branch}"
+  }
+}
+
 resource "azurerm_storage_account" "storage" {
-  name                   = "vhds${lower(var.stack_name)}${element(split("-", uuid()), 0)}"
+  name                   = "vhds${lower(var.stack_name)}${random_id.storage_suffix.hex}"
   resource_group_name    = "${azurerm_resource_group.res_group.name}"
-  location               = "${var.azure_location}"
+  location               = "${azurerm_resource_group.res_group.location}"
   account_type           = "Standard_LRS"
   enable_blob_encryption = true
 
   tags {
     environment = "${var.environment}"
     stack_name  = "${var.stack_name}"
+    contents    = "vhds"
     git_repo    = "${var.git_repo}"
     git_commit  = "${var.git_commit}"
     git_branch  = "${var.git_branch}"
-  }
-
-  lifecycle {
-    ignore_changes = [
-      "name",
-    ]
   }
 }
 
 resource "azurerm_storage_account" "logs" {
-  name                   = "logs${lower(var.stack_name)}${element(split("-", uuid()), 0)}"
+  name                   = "logs${lower(var.stack_name)}${random_id.storage_suffix.hex}"
   resource_group_name    = "${azurerm_resource_group.res_group.name}"
-  location               = "${var.azure_location}"
+  location               = "${azurerm_resource_group.res_group.location}"
   account_type           = "Standard_LRS"
   enable_blob_encryption = true
 
   tags {
     environment = "${var.environment}"
     stack_name  = "${var.stack_name}"
+    contents    = "logs"
     git_repo    = "${var.git_repo}"
     git_commit  = "${var.git_commit}"
     git_branch  = "${var.git_branch}"
-    role        = "logs"
-  }
-
-  lifecycle {
-    ignore_changes = [
-      "name",
-    ]
   }
 }
 

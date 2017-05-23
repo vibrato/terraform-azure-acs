@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "variables": {
+    "offerType": "Standard",
+    "databaseAccountName": "${databaseAccountName}"
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-04-08",
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "name": "[variables('databaseAccountName')]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "name": "[variables('databaseAccountName')]",
+        "databaseAccountOfferType": "[variables('offerType')]",
+        "locations": [
+          {
+            "locationName": "[resourceGroup().location]",
+            "failoverPriority": 0
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+    "documentDbPrimaryMasterKey": {
+      "type": "String",
+      "value": "[listKeys(resourceId('Microsoft.DocumentDB/databaseAccounts', variables('databaseAccountName')), providers('Microsoft.DocumentDB','databaseAccounts').apiVersions[0]).primaryMasterKey]"
+    }
+  }
+}

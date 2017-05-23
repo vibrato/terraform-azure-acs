@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: todo-deployment
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: todo-app
+      labels:
+        app: todo-app
+    spec:
+      imagePullSecrets:
+        - name: registrykey
+      containers:
+      - name: todo-app-nodejs
+        image: vibrato.azurecr.io/demo-apps/cosmosdb/nodejs:v3
+        ports:
+        - containerPort: 3000
+        env:
+        - name: cosmosdb_AccountKey
+          valueFrom:
+            secretKeyRef:
+              name: cosmosdb
+              key: AccountKey
+        - name: cosmosdb_AccountEndpoint
+          valueFrom:
+            secretKeyRef:
+              name: cosmosdb
+              key: AccountEndpoint
