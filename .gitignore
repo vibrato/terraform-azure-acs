@@ -1,6 +1,7 @@
 */terraform.tfstate
 */terraform.tfstate.backup
 */terraform.tfvars
+terraform/tmp/*
 *.pem
 */kube.config
 .vagrant
