@@ -76,7 +76,7 @@ variable "vm_size" {
 
 variable "agent_count" {
   type    = "string"
-  default = 5
+  default = 3
 }
 
 variable "git_repo" {
@@ -92,4 +92,13 @@ variable "git_branch" {
 variable "git_commit" {
   type    = "string"
   default = "unset"
+}
+
+variable "email" {
+  type = "string"
+}
+
+variable "deploy_version" {
+  type="string"
+  default="latest"
 }

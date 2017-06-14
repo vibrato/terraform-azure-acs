@@ -6,6 +6,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.synced_folder "./", "/home/vagrant/terraform-azure-acs"
 
+  config.vm.network :forwarded_port, guest:8001, host: 8001, id: "kube_proxy", host_ip: "localhost", auto_correct: true
+
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
   

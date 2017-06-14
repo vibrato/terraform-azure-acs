@@ -14,7 +14,7 @@ spec:
         - name: registrykey
       containers:
       - name: todo-app-nodejs
-        image: ${image}:${version}
+        image: terraformacscontainers.azurecr.io/demo-apps/cosmosdb/nodejs:v1
         ports:
         - containerPort: 3000
         env:

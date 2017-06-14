@@ -1,4 +1,4 @@
-TF_VERSION="0.9.5"
+TF_VERSION="0.9.8"
 TF_INSTALL_DIR="/usr/local/bin"
 TF_DOWNLOAD_DIR="/tmp"
 TF_DOWNLOAD_URL="https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip"
@@ -8,7 +8,7 @@ sudo apt-get update
 sudo apt-get install -y libssl-dev libffi-dev python-dev build-essential git unzip apt-transport-https ca-certificates curl
 
 # install terraform
-curl $TF_DOWNLOAD_URL -o $TF_DOWNLOADED_FILE
+curl --silent $TF_DOWNLOAD_URL --output $TF_DOWNLOADED_FILE
 sudo unzip -o $TF_DOWNLOADED_FILE -d $TF_INSTALL_DIR
 
 # install azure cli
