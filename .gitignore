@@ -1,9 +1,23 @@
+
+# do not check in state
 */terraform.tfstate
 */terraform.tfstate.backup
+
+# do not check in specific config
 */terraform.tfvars
+
+# ignore terraform temp files
 terraform/tmp/*
+# keep directory
+!terraform/tmp/.empty
+
+# ignore config and keys
 *.pem
 */kube.config
+
+# ignore vagrant and terraform working dirs
 .vagrant
 .terraform
+
+# ignore node modules dir
 node_modules
